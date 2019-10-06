@@ -134,15 +134,45 @@ header {
 }
 
 .fifthMain {
+  height: 620px;
+  width: 100%;
+  background: white;
+  background-size: cover;
+}
+@media (max-width: 375px) {
+  .fifthMain {
+    height: 0px;
+    width: 100%;
+    background: white;
+    background-size: cover;
+  }
+}
+
+.sixthMain {
+  height: 1615.53px;
+  width: 100%;
+  background: #131313;
+  background-size: cover;
+}
+@media (max-width: 375px) {
+  .sixthMain {
+    height: 4635px;
+    width: 100%;
+    background: #131313;
+    background-size: cover;
+  }
+}
+
+.seventhMain {
   height: 953.9px;
   width: 100%;
   background: url(./assets/images/BG-6.png);
   background-size: cover;
-  margin-top: 3760px;
+  margin-top: 1524.47px;
 }
 @media (max-width: 375px) {
-  .fifthMain {
-    height: 4635px;
+  .seventhMain {
+    height: 0px;
     width: 100%;
     background: #131313;
     background-size: cover;

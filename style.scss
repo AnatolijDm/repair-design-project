@@ -18,7 +18,7 @@ body {
     width: 100%;
 
     @media (max-width: $mobile) {
-        max-width: 375px;
+        max-width: $mobile;
     }
 
     max-width: 1440px;
@@ -91,10 +91,24 @@ header {
 }
 
 .fifthMain {
-    @include background (953.9px, 100%, url(./assets/images/BG-6.png));
-    margin-top: 3760px;
+    @include background (620px, 100%, white);
+    @media (max-width: $mobile) {
+        @include background (0px, 100%, white);
+    }
+ }
+
+.sixthMain {
+    @include background (1615.53px, 100%, $color);
     @media (max-width: $mobile) {
         @include background (4635px, 100%, $color);
+    }
+}
+
+.seventhMain {
+    @include background (953.9px, 100%, url(./assets/images/BG-6.png));
+    margin-top: 1524.47px;
+    @media (max-width: $mobile) {
+        @include background (0px, 100%, $color);
         margin-top: 0px;
     }
 }
