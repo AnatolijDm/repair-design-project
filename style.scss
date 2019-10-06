@@ -1,0 +1,108 @@
+$color: #131313;
+$mobile: 375px;
+
+body {
+    background-color: black;
+}
+
+@mixin background ($height, $width, $color) {
+    height: $height;
+    width: $width;    
+    background: $color;
+    background-size: cover;
+}
+
+.wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+
+    @media (max-width: $mobile) {
+        max-width: 375px;
+    }
+
+    max-width: 1440px;
+    background-color: white;
+}
+
+.firstMain {
+    @include background (790px, 100%, $color);
+    @media (max-width: $mobile) {
+        @include background (500px, 100%, $color);
+    }
+}
+
+header {
+    @include background (83px, 100%, $color);
+    display: block;
+    justify-content: top;
+    @media (max-width: $mobile) {
+        @include background (50px, 100%, $color);
+    }
+}
+
+.flex {
+    display: flex;
+}
+
+.leftblock {
+    @include background (707px, 5.7%, $color);
+    @media (max-width: $mobile) {
+        display: none;
+    }
+    display: block;
+    justify-content: bottom;
+    text-align: left;
+}
+
+.rightblock {
+    @include background (707px, 94.3%, url(./assets/images/BG-1.png));
+    @media (max-width: $mobile) {
+        @include background (470px, 100%, url(./assets/images/BG-1.png));
+    }
+    display: block;
+    justify-content: bottom;
+    text-align: right;
+}
+
+.secondMain {
+    @include background (1074px, 100%, $color);
+    @media (max-width: $mobile) {
+        @include background (1558px, 100%, $color);
+    }
+}
+
+.thirdMain {
+    @include background (2576px, 100%, white);
+    @media (max-width: $mobile) {
+        @include background (2008px, 100%, white);
+    }
+    position: relative;
+    bottom: 4%;
+}
+
+.fourthMain {
+    @include background (864px, 100%, url(./assets/images/BG-4.png));
+    @media (max-width: $mobile) {
+        @include background (0px, 100%, white);
+    }
+    position: relative;
+    bottom: 5%;
+}
+
+.fifthMain {
+    @include background (953.9px, 100%, url(./assets/images/BG-6.png));
+    margin-top: 3760px;
+    @media (max-width: $mobile) {
+        @include background (4635px, 100%, $color);
+        margin-top: 0px;
+    }
+}
+
+footer {
+    @include background (133px, 100%, $color);
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
