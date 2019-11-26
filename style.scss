@@ -1,5 +1,7 @@
 $color: #131313;
 $mobile: 375px;
+$colow: white;
+$logcolor: #E3B873;
 
 body {
     background-color: black;
@@ -12,47 +14,147 @@ body {
     background-size: cover;
 }
 
+@mixin text ($family, $size, $height, $col) {
+    font-family: $family;
+    font-size: $size;
+    line-height: $height;
+    color: $col;
+}
+
+@mixin flex ($justify, $align) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+}
+
 .wrapper {
     display: block;
     margin: 0 auto;
     width: 100%;
-
-    @media (max-width: $mobile) {
-        max-width: $mobile;
-    }
-
     max-width: 1440px;
-    background-color: white;
-}
-
-.firstMain {
-    @include background (790px, 100%, $color);
-    @media (max-width: $mobile) {
-        @include background (500px, 100%, $color);
-    }
+    background-color: $colow;
 }
 
 header {
-    @include background (83px, 100%, $color);
-    display: block;
-    justify-content: top;
+    @include background (83px, 100wv, $color);
+    @include flex (space-between, center);
+    padding-left: 5.7%;
+    padding-right: 5.7%;
     @media (max-width: $mobile) {
-        @include background (50px, 100%, $color);
+        @include background (50px, 100wv, $color);
+        padding-left: 0%;
+        padding-right: 0%;
     }
 }
 
-.flex {
+.logo {
+    @include text (FuturaDemiC, 14px, 16px, $logcolor);
+    text-transform: uppercase;
+    text-decoration: none;
+    @media (max-width: $mobile) {
+        font-size: 12px;
+        line-height: 14px;
+        padding-left: 10px;
+    }
+}
+
+.logo2 {
+    @include text (FuturaDemiC, 14px, 16px, $logcolor);
+    text-transform: uppercase;
+    @media (max-width: $mobile) {
+        padding-right: 10px;
+        text-decoration: none;
+        color: $colow;
+        white-space: nowrap;
+    }
+}
+
+.logo3 {
+    @include flex (center, center);
+    height: 37px;
+    width: 161px;
+    border: 1px solid $logcolor;
+    border-radius: 2px;
+    background-color: $logcolor;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+.logo3 a {
+    @include text (FuturaDemiC, 14px, 16px, $colow);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+nav {
+    @media (max-width: 900px) {
+        display: none;
+    }
+}
+
+nav ul {
+    @include flex (space-between, center);
+    width: 80%;
+    flex-direction: row;
+}
+
+.media_navigation {
+    display: none;
+}
+
+nav ul li {
+    padding-right: 10%;
+}
+
+.selected {
+    color: $logcolor;
+}
+
+nav ul li a {
+    @include text (FuturaBookC, 14px, 16px, $colow);
     display: flex;
+    text-decoration: none;
+}
+
+@media (max-width: 900px) {
+    nav {
+        display: none;
+    }
+}
+
+.firstMain {
+    display: flex;
+    flex-direction: row;
+    @include background (707px, 100%, $color);
+    @media (max-width: $mobile) {
+        @include background (450px, 100%, $color);
+    }
 }
 
 .leftblock {
+    margin-top: 83px;
     @include background (707px, 5.7%, $color);
     @media (max-width: $mobile) {
         display: none;
     }
-    display: block;
-    justify-content: bottom;
-    text-align: left;
+}
+
+.instagram {
+    @include text (FuturaDemiC, 14px, 16px, $logcolor);
+    position: relative;
+    top: 250px;
+    @include flex (center, center);
+    text-align: center;
+    transform: rotate(90deg);
+    text-decoration: none;
+}
+
+.line {    
+    position: relative;
+    left: 30px;
+    @include flex (center, center);
+    transform: rotate(90deg);
 }
 
 .rightblock {
@@ -60,28 +162,614 @@ header {
     @media (max-width: $mobile) {
         @include background (470px, 100%, url(./assets/images/BG-1.png));
     }
-    display: block;
-    justify-content: bottom;
-    text-align: right;
+    display: flex;
+    align-content: flex-end;
+}
+
+.message {
+    @include flex (center, none);
+    flex-direction: column;
+    width: 100%;
+    height: 707px;
+    background: rgba(0, 0, 0, 0.7);
+    @media (max-width: $mobile) {
+        @include flex(flex-start, none);
+        padding-top: 20%;
+    }
+}
+
+h1 {
+    @include text (FuturaDemiC, 40px, 50px, $colow);
+    width: 90%;
+    padding-left: 4%;
+    @media (max-width: 600px) {
+        @include text (FuturaDemiC, 30px, 132%, $colow);
+        width: 95%;
+    }
+    @media (max-width: $mobile) {
+        @include text (FuturaDemiC, 23px, 132%, $colow);
+    }
+}
+
+h1 span {
+    color: $logcolor;
+}
+
+.message p {
+    @include text (FuturaDemiC, 20px, 30px, $colow);
+    padding-left: 4%;
+    width: 500px;
+    @media (max-width: 600px) {
+        @include text (FuturaDemiC, 19px, 30px, $colow);
+        width: 350px;
+    }
+    @media (max-width: 400px) {
+        @include text (FuturaDemiC, 18px, 30px, $colow);
+        width: 95%;
+        padding-top: 20px;
+    }
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    @media (max-width: $mobile) {
+        flex-direction: column;
+    }
+}
+
+.calculate {
+    @include flex (center, center);
+    height: 37px;
+    width: 161px;
+    border: 1px solid $logcolor;
+    border-radius: 2px;
+    background-color: $logcolor;
+    margin-left: 4%;
+    margin-top: 40px;
+    @media (max-width: $mobile) {
+        height: 51px;
+        width: 90%;
+    }
+}
+
+.calculate a {
+    @include text (FuturaDemiC, 10px, 16px, $colow);
+    text-transform: uppercase;
+    text-decoration: none;
+    @media (max-width: $mobile) {
+        @include text (FuturaDemiC, 13px, 15px, $colow);
+    }
+}
+
+.submit {
+    @include flex (center, center);
+    flex-direction: row;
+    height: 37px;
+    width: 161px;
+    border: 1px solid $colow;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.0);
+    margin-left: 2%;
+    margin-top: 40px;
+    @media (max-width: $mobile) {
+        height: 51px;
+        width: 90%;
+        margin-left: 4%;
+        margin-top: 20px;
+    }
+}
+
+.submit a {
+    @include text (FuturaDemiC, 10px, 16px, $colow);
+    text-transform: uppercase;
+    text-decoration: none;
+    @media (max-width: $mobile) {
+        @include text (FuturaDemiC, 13px, 15px, $colow);
+    }
 }
 
 .secondMain {
     @include background (1074px, 100%, $color);
+    display: flex;
+    flex-direction: row;
     @media (max-width: $mobile) {
         @include background (1558px, 100%, $color);
     }
 }
 
-.thirdMain {
-    @include background (2576px, 100%, white);
+.complite {
+    @include flex(center, none);
+    flex-direction: column;
+    width: 40%;
+    height: 900px;
     @media (max-width: $mobile) {
-        @include background (2008px, 100%, white);
+        width: 100%;
+        height: 800px;
+    }
+}
+
+h2 {
+    @include text (Yeseva One, 27px, 37px, $logcolor);
+    padding-left: 18%;
+    text-transform: uppercase;
+    justify-content: flex-start;
+    @media (max-width: 600px) {
+        @include text (Yeseva One, 25px, 132%, $logcolor);
+    }
+    @media (max-width: $mobile) {
+        @include text (Yeseva One, 23px, 132%, $logcolor);
+        justify-content: center;
+        text-align: center;
+        padding-left: 0%;
+    }
+}
+
+.image2 {
+    position: relative;
+    left: 15%;
+    @media (max-width: 600px) {
+        display: none;
+    }
+}
+
+.complite p {
+    @include text (FuturaBookC, 18px, 29px, $colow);
+    width: 80%;
+    padding-left: 18%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+    @media (max-width: 600px) {
+        @include text (FuturaBookC, 16px, 25px, $colow);
+    }
+    @media (max-width: $mobile) {
+        @include text (FuturaBookC, 15px, 132%, $colow);
+        text-align: center;
+        padding-left: 10%;
+    }
+}
+
+.slider {
+    margin-top: 10%;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+h3 {
+    @include text (Yeseva One, 18px, 25px, $logcolor);
+    width: 500px;
+    text-transform: uppercase;
+    @media (max-width: 600px) {
+        @include text (Yeseva One, 16px, 132%, $logcolor);
+    }
+    @media (max-width: $mobile) {
+        @include text (Yeseva One, 14px, 132%, $logcolor);
+    }
+}
+
+.mobile_image {
+    @media (min-width: $mobile) {
+    display: none;
+    }
+    width: 95wv;
+    margin-bottom: 10%;
+}
+
+.content {
+    @include flex(flex-start, flex-start);
+    margin-left: 18%;
+    flex-direction: column;
+    @media (max-width: $mobile) {
+        margin-left: 5%;
+    }
+}
+
+.content div {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+}
+
+.content div div {
+    flex-direction: column;
+}
+
+.content div div p {
+    @include text (FuturaBookC, 18px, 29px, $colow);
+    width: 50%;
+    padding-left: 0%;
+    margin-top: 5%;
+    @media (max-width: 600px) {
+        @include text (FuturaDemiC, 16px, 132%, $colow);
+    }
+    @media (max-width: $mobile) {
+        @include text (FuturaDemiC, 14px, 132%, $colow);
+        width: 100%;
+        text-align: left;
+    }
+}
+
+.example {
+    @include flex(center, flex-start); 
+    flex-direction: column;
+    height: 900px;
+    position: relative;
+    bottom: 5%;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+.example--menu {
+    width: 100%;
+    flex-direction: row;
+}
+
+.example--menu :first-child {
+    @include text(Yeseva One, 14px, 19px, $logcolor);
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin-right: 8%;
+    text-decoration: underline;
+}
+
+@media (max-width: 1070px) {
+    .example--menu :last-child {
+        display: none;
+    }
+}
+
+.example--menu a {
+    @include text(Yeseva One, 14px, 19px, rgba(255, 255, 255, 0.3));
+    text-transform: uppercase;
+    text-decoration: none;
+    white-space: nowrap;
+    margin-right: 8%;
+}
+
+.example div {
+    flex-direction: row;
+}
+
+.example div img {
+    margin-top: 10%;
+    margin-left: 10px;
+    width: 78%;
+}
+
+.example div :last-child {
+    width: 16.5%;
+    @media (max-width: 730px) {
+        display: none;
+    }
+}
+
+.online-control {
+    @include background (2576px, 100%, $colow);
+    display: block;
+    margin: 0 auto;
+    @media (max-width: $mobile) {
+        @include background (1500px, 100%, $colow);
     }
     position: relative;
     bottom: 4%;
 }
 
-.fourthMain {
+.control {
+    @include flex(center, center);
+    flex-direction: column;
+    position: relative;
+    bottom: 300px;
+    @media (max-width: $mobile) {
+        bottom: 800px;
+    }
+}
+
+.control p {
+    @include text(Yeseva One, 20px, 28px, $colow);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 22px, 138%, $colow);
+    }
+}
+
+.online-control video {
+    display: block;
+    margin: 0 auto;
+    position: relative;
+    bottom: 260px;
+    @media (max-width: $mobile) {
+        bottom: 760px;
+        width: 90%;
+    }
+}
+
+.online-video__text {
+    display: block;
+    margin: 0 auto;
+    @include text(FuturaBookC, 20px, 34px, #363636);
+    text-align: center;
+    width: 40%;
+    position: relative;
+    bottom: 200px;
+    @media (max-width: $mobile) {
+        width: 90%;
+        @include text(FuturaBookC, 14px, 170%, $colow);
+        position: relative;
+        bottom: 700px;
+    }
+}
+
+form {
+    @include flex(center, center);
+    flex-direction: column;
+    margin-top: 50px;
+    position: relative;
+    bottom: 200px;
+    @media (max-width: $mobile) {
+        width: 70%;
+        position: relative;
+        bottom: 700px;
+        left: 10%;
+        text-align: center;
+    }
+}
+
+form div {
+    flex-direction: row;
+}
+
+#submit {
+    height: 51px;
+    width: 200px;
+    border: 1px solid $logcolor;
+    background-color: $logcolor;
+    text-align: center;
+    position: relative;
+    bottom: 50px;
+    @include text(FuturaDemiC, 15px, 26px, $colow);
+    @media (max-width: $mobile) {
+        width: 95%;
+        height: 30px;
+        text-align: center;
+        bottom: 0px;
+    }    
+}    
+
+.form_id label {
+    @include text(FuturaDemiC, 15px, 26px, $color);
+    @media (max-width: $mobile) {
+        color: $colow;
+    }
+}
+
+.form_text {
+    @include flex(center, center);
+    flex-direction: column;
+    @media (max-width: $mobile) {
+        flex-direction: column-reverse;
+        width: 120%;
+    }
+}
+
+#name-id {
+    width: 30%;
+    margin-bottom: 30px;
+    @media (max-width: $mobile) {
+        width: 80%;
+    }
+}
+
+#phone-id {
+    width: 30%;
+    margin-bottom: 10px;
+    @media (max-width: $mobile) {
+        width: 80%;
+    }
+}
+
+.user_id {
+    position: relative;
+    bottom: 45px;
+    @media (max-width: $mobile) {
+        bottom: 0px;
+    }
+}
+
+.types_of_repair {
+    @media (max-width: $mobile) {
+      position: relative;
+      bottom: 100px;  
+    }
+}
+
+.types {
+    @include flex(center, center);
+    flex-direction: column;
+    margin-top: 0px;
+    @media (max-width: $mobile) {
+        position: relative;
+        bottom: 500px;
+    }
+}
+
+.types p {
+    @include text(Yeseva One, 20px, 28px, $color);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 22px, 138%, $color);
+    }
+}
+
+.types_of_repair--tab {
+    @include flex(center, center);
+    flex-direction: row;
+    @media (max-width: $mobile) {
+        flex-direction: column;
+        position: relative;
+        bottom: 500px;
+    }
+}
+
+.types_of_repair--tab-bg {
+    width: 32%;
+    margin-top: 40px;    
+    @media (max-width: $mobile) {
+        width: 95%;
+        margin-left: 7%;
+        margin-top: 20px;
+    }
+}
+
+.types_of_repair--tab div img {
+    width: 90%;
+    @media (max-width: $mobile) {
+        width: 95wv;
+    }
+}
+
+.tab ul {
+    padding-left: 8%;
+    text-align: left;
+    @include text(FuturaBookC, 15px, 25px, #959595);
+    @media (max-width: $mobile) {
+        @include text(FuturaBookC, 13px, 170%, #959595);
+    }
+}
+
+.tab {
+    width: 80%;
+    height: 300px;
+    background-color: $colow;
+    position: relative;
+    bottom: 130px;
+    left: 6%;
+    box-shadow: 5px 2px 1px rgba(0, 0, 0, 0.1);
+    @media (max-width: $mobile) {
+        height: 200px;
+    }
+}
+
+.tab h3 {
+    padding-left: 8%;
+    padding-top: 20px;
+    @include text(Yeseva One, 18px, 25px, $color);
+    text-transform: none;
+    font-weight: bold;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 15px, 140%, $color);
+    }
+}
+
+.input_tab {
+    @include text(Yeseva One, 18px, 25px, $colow);
+    width: 60%;
+    height: 54px;
+    background-color: $logcolor;
+    position: relative;
+    top: 50px;
+    text-transform: uppercase;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 15px, 140%, $colow);
+        width: 60%;
+        height: 40px;
+        top: 20px;
+    }
+}
+
+.draft_house {
+    @include flex(flex-start, center);
+    flex-direction: row;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+.draft_house img {
+    width: 60%;
+}
+
+.draft_house--right {
+    @include flex(flex-start, flex-start);
+    flex-direction: column;
+    width: 30%;
+    margin-left: 4%;
+    margin-top: 280px;
+}
+
+.draft_house--form {
+    width: 100%;
+    height: 420px;
+    background-color: black;
+    border: 1px solid black;
+    @include text(FuturaBookC, 15px, 20px, rgba(255, 255, 255, 0.5));
+    @include flex(flex-start, flex-start);
+    padding-left: 3%;
+}
+
+.draft_house--form h3 {
+    @include text(FuturaDemiC, 20px, 25px, $colow);
+    text-transform: none;
+    width: 60%;
+    text-align: center;
+    padding-left: 10%;
+    padding-bottom: 30px;
+    padding-top: 20px;
+}
+
+#name-id-draft {
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+#phone-id-draft {
+    width: 80%;
+    margin-bottom: 30px;
+}
+
+#mail-id-draft {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
+.form_draft {
+    @include flex(center, center);
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+
+#submit-draft {
+    @include text(FuturaDemiC, 13px, 18px, $colow);
+    text-transform: uppercase;
+    text-align: center;
+    @include background(51px, 213px, $logcolor);
+    margin-left: 35%;
+}
+
+.save_money {
+    @include flex(flex-start, flex-start);
+    flex-direction: row;
+    position: relative;
+    bottom: 170px;
+    margin-left: 5%;
+}
+
+.save_money img {
+    width: 20%;
+}
+
+.save_money p {
+    @include text(FuturaDemiC, 20px, 25px, $logcolor);
+    padding-left: 5%;
+    width: 60%;
+}
+
+.we_realize_box {
     @include background (864px, 100%, url(./assets/images/BG-4.png));
     @media (max-width: $mobile) {
         @include background (0px, 100%, white);
@@ -90,33 +778,759 @@ header {
     bottom: 5%;
 }
 
-.fifthMain {
-    @include background (620px, 100%, white);
+.we_realize {
+    @include background(864px, 100%, rgba(0, 0, 0, 0.7));
+    @include flex(center, center);
+    flex-direction: row;
     @media (max-width: $mobile) {
         @include background (0px, 100%, white);
     }
- }
-
-.sixthMain {
-    @include background (1615.53px, 100%, $color);
-    @media (max-width: $mobile) {
-        @include background (4635px, 100%, $color);
-    }
 }
 
-.seventhMain {
-    @include background (953.9px, 100%, url(./assets/images/BG-6.png));
-    margin-top: 1524.47px;
+.we_realize--left {
+    width: 30%;
+    height: 800px;
+    margin-top: 170px;
     @media (max-width: $mobile) {
-        @include background (0px, 100%, $color);
+        width: 70%;
         margin-top: 0px;
+        position: relative;
+        top: 650px;
+        text-align: center;
     }
 }
 
-footer {
-    @include background (133px, 100%, $color);
+.we_realize--left h3 {
+    @include text(Yeseva One, 27px, 37px, $logcolor);
+    width: 70%;
+    margin-bottom: 50px;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 22px, 140%, $logcolor);
+        width: 100%;
+        margin-top: 50px;
+    }
+}
+
+.we_realize--image {
+    display: none;
+    @media (max-width: $mobile) {
+        @include flex(center, center);
+        width: 120%;
+        position: relative;
+        right: 10%;
+    }
+}
+
+.we_realize--left ul {
+    @include text(Proxima Nova, 20px, 34px, $colow);
+    @media (max-width: $mobile) {
+       display: none;
+    }
+}
+
+.selected {
+    color: $logcolor;
+    text-decoration: underline;
+}
+
+.we_realize--center {
+    width: 30%;
+    height: 800px;
     @media (max-width: $mobile) {
         display: none;
     }
 }
 
+.image-top {
+    position: relative;
+    bottom: 80px;
+}
+
+.image-bottom {
+    position: relative;
+    bottom: 30px;
+}
+
+.we_realize--right {
+    width: 30%;
+    height: 800px;
+    position: relative;
+    bottom: 70px;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+.design-project {
+    @include background (620px, 100%, white);
+    @media (max-width: $mobile) {
+        @include background (1635px, 100%, $color);
+    } 
+ }
+
+ .design-project--head {
+     @include flex(center, center);
+     flex-direction: column;
+     margin-top: 200px;
+     @media (max-width: $mobile) {
+        margin-top: 600px;
+        position: relative;
+        top: 100px;
+    }
+ }
+
+.design-project--head :first-child {
+    @include text(Yeseva One, 20px, 28px, $color);
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 22px, 140%, $colow);
+    }
+}
+
+.design-project--head-text {
+    @include text(FuturaBookC, 20px, 27px, $color);
+    text-align: center;
+    margin-top: 40px;
+    width: 52%;
+    @media (max-width: $mobile) {
+        @include text(FuturaBookC, 15px, 140%, $colow);
+        margin-top: 20px;
+        width: 80%;
+    }
+}
+
+.design-project--tab {
+    @include flex(center, flex-start);
+    flex-direction: row;
+    @media (max-width: $mobile) {
+        flex-direction: column;
+        position: relative;
+        top: 100px;
+    }
+}
+
+.design-project--tab-bg {
+    width: 32%;
+    margin-top: 40px;    
+    @media (max-width: $mobile) {
+        width: 95%;
+        margin-left: 7%;
+        margin-top: 20px;
+    }
+}
+
+.design-project--tab div img {
+    width: 90%;
+    @media (max-width: $mobile) {
+        width: 95wv;
+    }
+}
+
+.tab1 ul, .tab2 ul, .tab3 ul {
+    padding-left: 8%;
+    text-align: left;
+    @include text(FuturaBookC, 15px, 25px, #959595);
+    @media (max-width: $mobile) {
+        @include text(FuturaBookC, 13px, 170%, #959595);
+    }
+}
+
+.tab1 {
+    width: 80%;
+    height: 220px;
+    background-color: $colow;
+    position: relative;
+    bottom: 130px;
+    left: 6%;
+    box-shadow: 5px 2px 1px rgba(0, 0, 0, 0.1);
+    @media (max-width: $mobile) {
+        height: 160px;
+    }
+}
+
+.tab2 {
+    width: 80%;
+    height: 300px;
+    background-color: $colow;
+    position: relative;
+    bottom: 130px;
+    left: 6%;
+    box-shadow: 5px 2px 1px rgba(0, 0, 0, 0.1);
+    @media (max-width: $mobile) {
+        height: 240px;
+    }
+}
+
+.tab3 {
+    width: 80%;
+    height: 420px;
+    background-color: $colow;
+    position: relative;
+    bottom: 130px;
+    left: 6%;
+    box-shadow: 5px 2px 1px rgba(0, 0, 0, 0.1);
+    @media (max-width: $mobile) {
+        height: 340px;
+    }
+}
+
+.tab1 h3, .tab2 h3, .tab3 h3 {
+    padding-left: 8%;
+    padding-top: 20px;
+    @include text(Yeseva One, 18px, 25px, $color);
+    text-transform: none;
+    font-weight: bold;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 15px, 140%, $color);
+    }
+}
+
+.input_tab1 {
+    @include text(Yeseva One, 18px, 25px, $colow);
+    width: 60%;
+    height: 54px;
+    background-color: $logcolor;
+    position: relative;
+    top: 50px;
+    text-transform: uppercase;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 15px, 140%, $colow);
+        width: 60%;
+        height: 40px;
+        top: 20px;
+    }
+}
+
+.how_working {
+    @include flex(space-around, center);
+    flex-direction: row;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+.steps {
+    @include flex(center, flex-start);
+    flex-direction: column;
+    width: 30%;
+}
+
+.steps :first-child {
+    @include text(FuturaDemiC, 15px, 21px, $colow);
+    position: relative;
+    bottom: 100px;
+}
+
+.steps h3 {
+    @include text(Yeseva One, 27px, 37px, $logcolor);
+    width: 40%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: relative;
+    bottom: 100px;
+}
+
+.steps--one {
+    @include text(Yeseva One, 18px, 25px, $colow);
+    margin-bottom: 20px;
+}
+
+.steps--departure {
+    @include text(Yeseva One, 15px, 23px, $logcolor);
+    text-transform: uppercase;
+    width: 50%;
+    margin-bottom: 20px;
+}
+
+.steps--after {
+    @include text(FuturaBookC, 15px, 25px, $colow);
+    width: 80%;
+    margin-bottom: 120px;
+}
+
+.six_steps {
+    @include flex(center, center);
+    flex-direction: column;
+}
+
+.six_steps--steps {
+    @include flex(center, center);
+    flex-direction: column;
+}
+
+.six_steps--steps-01 {
+    @include flex(space-between, flex-start);
+    flex-direction: row;
+    width: 100%;
+}
+
+.six_steps--steps-02 {
+    @include flex(space-between, flex-start);
+    flex-direction: row;
+    width: 100%;
+}
+
+.six_steps--steps-01-01 {
+    position: relative;
+    right: 28%;
+}
+
+.six_steps--steps-02-01 {
+    position: relative;
+    right: 28%;
+}
+
+.six_steps--steps-01-02 {
+    position: relative;
+    right: 5%;
+}
+
+.six_steps--steps-01-03 {
+    position: relative;
+    left: 32%;
+}
+
+.six_steps--steps-02-03 {
+    position: relative;
+    left: 25%;
+}
+
+.six_steps img {
+    margin-top: 60px;
+}
+
+.selected {
+    @include text(FuturaBookC, 15px, 18px, $colow);
+    padding-bottom: 10px;
+}
+
+.text_selected {
+    @include text(FuturaBookC, 15px, 18px, $colow);
+    padding-right: 20%;
+    padding-bottom: 30px;
+}
+
+.not_selected {
+    @include text( FuturaBookC, 15px, 21px, $colow);
+    opacity: 0.5;
+    text-transform: uppercase;
+    padding-bottom: 10px;
+}
+
+.text_not_selected {
+    @include text( FuturaBookC, 15px, 18px, $colow);
+    opacity: 0.5;
+    padding-right: 20%;
+    padding-bottom: 30px;
+}
+
+.not_selected1 {
+    @include text( FuturaBookC, 15px, 21px, $colow);
+    opacity: 0.5;
+    text-transform: uppercase;
+    padding-right: 25%;
+}
+
+.text_not_selected1 {
+    @include text( FuturaBookC, 15px, 18px, $colow);
+    opacity: 0.5;
+    padding-bottom: 30px;
+}
+
+.ourTeam {
+    @include background (1615.53px, 100%, $color);
+    @media (max-width: $mobile) {
+        @include background (2300px, 100%, $color);
+    }
+}
+
+ .ourTeam--head {
+     @include flex(center, center);
+     flex-direction: column;
+     margin-top: 300px;
+     position: relative;
+        top: 1000px;
+     @media (max-width: $mobile) {
+        margin-top: 0px;
+        position: relative;
+        top: 100px;
+    }
+ }
+
+.ourTeam--head :first-child {
+    @include text(Yeseva One, 20px, 28px, $colow);
+    text-align: center;
+    margin-bottom: 60px;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 22px, 140%, $colow);
+        margin-bottom: 20px;
+        margin-top: 360px;
+    }
+}
+
+.ourTeam--head-text {
+    @include text(FuturaBookC, 20px, 27px, $colow);
+    text-align: center;
+    margin-top: 60px;
+    width: 32%;
+    @media (max-width: $mobile) {
+        @include text(FuturaBookC, 15px, 140%, $colow);
+        margin-top: 20px;
+        width: 95%;
+    }
+}
+
+.ourTeam--columns {
+    @include flex(center, flex-start);
+    flex-direction: row;
+    position: relative;
+    top: 1000px;
+    @media (max-width: $mobile) {
+        flex-direction: column;
+        position: relative;
+        top: 100px;
+    }
+}
+
+.ourTeam--columns-team {
+    width: 28%;
+    margin-top: 40px;    
+    @media (max-width: $mobile) {
+        width: 100%;
+        margin-left: 15%;
+        margin-top: 20px;
+    }
+}
+
+#iconTeam {
+    width: 30%;
+    position: relative;
+    top: 60px;
+    right: 15%;
+    @media (max-width: $mobile) {
+        width: 95wv;
+    }
+}
+
+.columnDmitrij p, .columnLarisa p, .columnAlexej p {
+    text-align: center;
+    @include text(FuturaBookC, 18px, 26px, #959595);
+}
+
+.columnDmitrij {
+    width: 60%;
+    height: 134px;
+    background-color: $colow;
+    position: relative;
+    bottom: 80px;
+    left: 6%;
+    box-shadow: 5px 2px 1px rgba(0, 0, 0, 0.1);
+    @media (max-width: $mobile) {
+        height: 130px;
+        width: 63%;
+        bottom: 20px;
+    }
+}
+
+.columnLarisa {
+    width: 60%;
+    height: 134px;
+    background-color: $colow;
+    position: relative;
+    bottom: 80px;
+    left: 6%;
+    box-shadow: 5px 2px 1px rgba(0, 0, 0, 0.1);
+    @media (max-width: $mobile) {
+        height: 130px;
+        width: 63%;
+        bottom: 20px;
+    }
+}
+
+.columnAlexej {
+    width: 60%;
+    height: 134px;
+    background-color: $colow;
+    position: relative;
+    bottom: 80px;
+    left: 6%;
+    box-shadow: 5px 2px 1px rgba(0, 0, 0, 0.1);
+    @media (max-width: $mobile) {
+        height: 130px;
+        width: 63%;
+        bottom: 20px;
+    }
+}
+
+.columnDmitrij h3, .columnLarisa h3, .columnAlexej h3 {
+    padding-top: 20px;
+    position: relative;
+    right: 60%;
+    @include text(Yeseva One, 18px, 25px, $color);
+    text-transform: none;
+    font-weight: bold;
+    text-align: center;
+    @media (max-width: $mobile) {
+        
+    }
+}
+
+.input_team {
+    @include text(Yeseva One, 13px, 20px, $colow);
+    width: 100%;
+    height: 54px;
+    background-color: $logcolor;
+    position: relative;
+    top: 10px;
+    text-transform: uppercase;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 15px, 140%, $colow);
+        width: 100%;
+        height: 40px;
+        top: 20px;
+    }
+}
+
+.ourTeam--resume {
+    display: block;
+    margin: 0 auto;
+    @include text(FuturaBookC, 20px, 34px, #363636)
+    position: relative;
+    top: 1000px;
+    width: 40%;
+    text-align: center;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+.ourClients {
+    @include background (1050px, 100%, $colow);
+    @media (max-width: $mobile) {
+        @include background (0px, 100%, $colow);
+    }
+}
+
+.ourClients--head {
+    @include flex(center, center);
+    flex-direction: column;
+    margin-top: 300px;
+    position: relative;
+    top: 130px;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+.ourClients--head :first-child {
+   @include text(Yeseva One, 20px, 28px, $color);
+   text-align: center;
+   margin-bottom: 60px;
+   font-weight: bold;
+}
+
+.ourClients--head-text {
+   @include text(FuturaBookC, 20px, 27px, $color);
+   text-align: center;
+   margin-top: 60px;
+   width: 30%;
+}
+
+.ourClients--columns {
+   @include flex(center, flex-start);
+   flex-direction: row;
+   position: relative;
+   top: 130px;
+   @media (max-width: $mobile) {
+    display: none;
+}
+}
+
+.ourClients--columns-client {
+   width: 28%;
+   margin-top: 40px;    
+}
+
+.client--every {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.explain {
+    width: 80%;
+   text-align: left;
+   @include text(FuturaBookC, 15px, 180%, #959595);
+}
+
+.client--every p {
+   padding-top: 20px;
+   padding-left: 20px;
+   @include text(Yeseva One, 18px, 25px, $color);
+   text-transform: none;
+   font-weight: bold;
+   text-align: left;
+   width: 50%;
+}
+
+.buttons--amount, .buttons--time {
+   @include text(Yeseva One, 13px, 20px, $colow);
+   width: 30%;
+   height: 36px;
+   background-color: $logcolor;
+   border: 1px solid $colow;
+   text-align: center;
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+   top: 40px;
+   text-transform: uppercase;
+}
+
+#icon-amount, #icon-time {
+    width: 20%;
+    margin-right: 10%;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0 auto;
+    width: 50%;
+    height: 350px;
+    border: 1px solid $color;
+    background-color: $color;
+    position: relative;
+    top: 240px;
+    @media (max-width: $mobile) {
+        display: block;
+        top: 170px;
+        width: 100%;
+        margin-left: -40px;
+        background-color: rgba(0, 0, 0, 0.0);
+    }
+}
+
+.questions p {
+    @include text(Yeseva One, 20px, 28px, $colow)
+    padding: 20px;
+}
+
+.questions label {
+    @include text(Yeseva One, 15px, 20px, $colow);
+    @media (max-width: $mobile) {
+        display: block;
+    }
+}
+
+.questions--name {
+    margin: 20px;
+    flex-direction: row;
+    @media (max-width: $mobile) {
+        display: block;
+        width: 100%;
+    }
+}
+
+#questions--name-id, #questions--phone-id {
+    margin: 10px;
+    @media (max-width: $mobile) {
+        width: 60%;
+    }
+}
+
+#questions--id {
+    width: 60%;
+    margin: 10px;
+    @media (max-width: $mobile) {
+        width: 70%;
+    }
+}
+
+#question--submit {
+    width: 30%;
+    height: 50px;
+    border: 1px solid $logcolor;
+    background-color: $logcolor;
+    color: $colow;
+    @media (max-width: $mobile) {
+        width: 90%;
+        height: 30px;
+    }
+}
+
+.ourAddress {
+    @include background (953.9px, 100%, url(./assets/images/BG-6.png));
+    @media (max-width: $mobile) {
+        @include background (950px, 100%, $color);
+    }
+}
+
+.ourAddress--bg {
+    height: 953.9px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.design-address {
+    @include text(Yeseva One, 20px, 28px, $logcolor);
+    text-transform: uppercase;
+    margin: 0 auto;
+    width: 40%;
+    text-align: center;
+    position: relative;
+    top: 230px;
+    @media (max-width: $mobile) {
+        @include text(Yeseva One, 18px, 140%, $logcolor);
+        top: 770px;
+        width: 90%;
+    }
+}
+
+.design-icons {
+    text-align: center;
+    position: relative;
+    top: 240px;
+    @media (max-width: $mobile) {
+        top: 800px;
+    }
+}
+
+.map {
+    position: relative;
+    top: 310px;
+    margin-left: 15%;
+    @media (max-width: $mobile) {
+        top: 450px;
+        margin-left: 0%;
+        width: 100%;
+    }
+}
+
+footer {
+    @include background (133px, 100wv, $color);
+    @include flex (space-between, center);
+    padding-left: 5.7%;
+    padding-right: 5.7%;
+    @media (max-width: $mobile) {
+        display: none;
+    }
+}
+
+@font-face {
+    font-family: FuturaBookC;
+    font-weight: normal;
+    font-style: normal;
+    src: url(./assets/fonts/FTR45C.ttf);
+}
+
+@font-face {
+    font-family: FuturaDemiC;
+    font-weight: normal;
+    font-style: normal;
+    src: url(./assets/fonts/FTR65C.ttf);
+}
